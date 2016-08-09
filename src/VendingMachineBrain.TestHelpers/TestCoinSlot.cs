@@ -1,4 +1,4 @@
-namespace VendingMachineBrain.Tests
+namespace VendingMachineBrain.TestHelpers
 {
     public class TestCoinSlot : ICoinSlot
     {

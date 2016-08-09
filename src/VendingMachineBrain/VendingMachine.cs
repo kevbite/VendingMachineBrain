@@ -1,16 +1,23 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using VendingMachineBrain.CoinIdentifiers;
 
 namespace VendingMachineBrain
 {
     public class VendingMachine : IKeypadObserver, ICoinSlotObserver
     {
-        private Dictionary<ProductSlot, Product> _state;
+        private IDictionary<ProductSlot, Product> _state;
         private readonly IProductDispenser _productDispenser;
         private readonly ICoinIdentifier _coinIdentifier;
         private readonly IDisplay _display;
 
         public decimal Balance { get; private set; }
+
+        public VendingMachine(IKeypad keypad, IProductDispenser productDispenser, ICoinSlot coinSlot, IDisplay display)
+            : this(keypad, productDispenser, coinSlot, new RoyalMintCoinIdentifier(), display)
+        {
+            
+        }
 
         public VendingMachine(IKeypad keypad, IProductDispenser productDispenser, ICoinSlot coinSlot, ICoinIdentifier coinIdentifier, IDisplay display)
         {
@@ -22,7 +29,7 @@ namespace VendingMachineBrain
             _display = display;
         }
 
-        public void SetState(Dictionary<ProductSlot, Product> state)
+        public void SetState(IDictionary<ProductSlot, Product> state)
         {
             _state = state;
         }

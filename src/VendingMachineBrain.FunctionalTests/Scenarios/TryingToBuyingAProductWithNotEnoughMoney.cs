@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FluentAssertions;
+﻿using FluentAssertions;
 using NUnit.Framework;
 
-namespace VendingMachineBrain.Tests.VendingMachineTests
+namespace VendingMachineBrain.FunctionalTests.Scenarios
 {
     [TestFixture]
-    public class VendingMachineTestsForNotEnoughMoneyToBuyAProduct : VendingMachineTests
+    public class TryingToBuyingAProductWithNotEnoughMoney : VendingMachineTests
     {
         private Product _expectedProduct;
         private decimal _expectedBalance;
@@ -19,13 +14,9 @@ namespace VendingMachineBrain.Tests.VendingMachineTests
         {
             GivenAVedingMachine();
             _expectedProduct = State[ProductSlot.Two];
-            var tenPence = Coin.TenPence;
-            _expectedBalance = tenPence.Amount;
-            var rawCoin = new RawCoin(0,0);
-            CoinIdentifier.Setup(x => x.Identifier(rawCoin))
-                .Returns(tenPence);
+            _expectedBalance = 0.10m;
 
-            CoinSlot.Insert(rawCoin);
+            CoinSlot.Insert(RawCoins.TenPence);
 
             Keypad.Press(Key.Two);
         }

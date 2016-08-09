@@ -1,26 +1,26 @@
-﻿using FluentAssertions;
+﻿using Castle.Core.Internal;
+using FluentAssertions;
 using Moq;
 using NUnit.Framework;
 
-namespace VendingMachineBrain.Tests.VendingMachineTests
+namespace VendingMachineBrain.FunctionalTests.Scenarios
 {
     [TestFixture]
-    public class VendingMachineTestsForInsertingEnoughMoneyToBuyAProduct : VendingMachineTests
+    public class BuyingAProductWithExactMoney : VendingMachineTests
     {
-        private Product _expectedProduct;
-
         [OneTimeSetUp]
         public void WhenInsertingEnoughMoneyAndPressingKeyTwo()
         {
             GivenAVedingMachine();
 
-            _expectedProduct = State[ProductSlot.Two];
+            var coins = new[]
+            {
+                RawCoins.TenPence,
+                RawCoins.TwentyPence,
+                RawCoins.TwentyPence
+            };
 
-            var rawCoin = new RawCoin(0,0);
-            CoinIdentifier.Setup(x => x.Identifier(rawCoin))
-                .Returns(Coin.FiftyPence);
-
-            CoinSlot.Insert(rawCoin);
+            coins.ForEach(x => CoinSlot.Insert(x));
 
             Keypad.Press(Key.Two);
         }
@@ -35,6 +35,7 @@ namespace VendingMachineBrain.Tests.VendingMachineTests
         public void ThenDisplayShowsThankYouThenShowsInsertCoin()
         {
             Display.Read().Should().Be("THANK YOU");
+            Display.Read().Should().Be("INSERT COIN");
             Display.Read().Should().Be("INSERT COIN");
             Display.Read().Should().Be("INSERT COIN");
         }
