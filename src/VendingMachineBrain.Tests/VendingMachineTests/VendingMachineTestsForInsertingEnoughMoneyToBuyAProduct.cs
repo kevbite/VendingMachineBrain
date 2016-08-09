@@ -14,11 +14,11 @@ namespace VendingMachineBrain.Tests.VendingMachineTests
         {
             GivenAVedingMachine();
 
-            _expectedProduct = State[ProductSlot.Two].Peek();
+            _expectedProduct = State[ProductSlot.Two];
 
-            var rawCoin = new RawCoin();
+            var rawCoin = new RawCoin(0,0);
             CoinIdentifier.Setup(x => x.Identifier(rawCoin))
-                .Returns(new Coin(_expectedProduct.Price));
+                .Returns(Coin.FiftyPence);
 
             CoinSlot.Insert(rawCoin);
 
@@ -28,7 +28,7 @@ namespace VendingMachineBrain.Tests.VendingMachineTests
         [Test]
         public void ThenTheCorrectProductIsDispensed()
         {
-            ProductDispenser.Verify(x => x.Dispense(_expectedProduct), Times.Once);
+            ProductDispenser.Verify(x => x.Dispense(ProductSlot.Two), Times.Once);
         }
 
         [Test]

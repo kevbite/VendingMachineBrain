@@ -2,6 +2,6 @@ namespace VendingMachineBrain
 {
     public interface IProductDispenser
     {
-        void Dispense(Product product);
+        void Dispense(ProductSlot productSlot);
     }
 }

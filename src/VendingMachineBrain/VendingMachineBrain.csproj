@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Coin.cs" />
+    <Compile Include="CoinIdentifiers\RoyalMintCoinIdentifier.cs" />
     <Compile Include="ICoinIdentifier.cs" />
     <Compile Include="ICoinSlot.cs" />
     <Compile Include="ICoinSlotObserver.cs" />

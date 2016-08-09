@@ -5,7 +5,7 @@ namespace VendingMachineBrain
 {
     public class VendingMachine : IKeypadObserver, ICoinSlotObserver
     {
-        private Dictionary<ProductSlot, Queue<Product>> _state;
+        private Dictionary<ProductSlot, Product> _state;
         private readonly IProductDispenser _productDispenser;
         private readonly ICoinIdentifier _coinIdentifier;
         private readonly IDisplay _display;
@@ -22,7 +22,7 @@ namespace VendingMachineBrain
             _display = display;
         }
 
-        public void SetState(Dictionary<ProductSlot, Queue<Product>> state)
+        public void SetState(Dictionary<ProductSlot, Product> state)
         {
             _state = state;
         }
@@ -31,13 +31,11 @@ namespace VendingMachineBrain
         {
             var productSlot = _keyProductSlotMap[key];
 
-            var slot = _state[productSlot];
-
-            var product = slot.Peek();
+            var product = _state[productSlot];
 
             if (product.Price <= Balance)
             {
-                _productDispenser.Dispense(slot.Dequeue());
+                _productDispenser.Dispense(productSlot);
                 Balance -= product.Price;
                 _display.Write("THANK YOU");
                 _display.Write("INSERT COIN");

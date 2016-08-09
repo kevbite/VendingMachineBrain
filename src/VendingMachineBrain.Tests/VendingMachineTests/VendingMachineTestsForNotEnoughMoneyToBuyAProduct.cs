@@ -18,11 +18,12 @@ namespace VendingMachineBrain.Tests.VendingMachineTests
         public void WhenPressingKeyTwo()
         {
             GivenAVedingMachine();
-            _expectedProduct = State[ProductSlot.Two].Peek();
-            _expectedBalance = _expectedProduct.Price - 0.01m;
-            var rawCoin = new RawCoin();
+            _expectedProduct = State[ProductSlot.Two];
+            var tenPence = Coin.TenPence;
+            _expectedBalance = tenPence.Amount;
+            var rawCoin = new RawCoin(0,0);
             CoinIdentifier.Setup(x => x.Identifier(rawCoin))
-                .Returns(new Coin(_expectedBalance));
+                .Returns(tenPence);
 
             CoinSlot.Insert(rawCoin);
 

@@ -60,6 +60,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CoinIdentifiers\RoyalMintCoinIdentifierTests.cs" />
     <Compile Include="TestCoinSlot.cs" />
     <Compile Include="TestDisplay.cs" />
     <Compile Include="TestKeypad.cs" />
