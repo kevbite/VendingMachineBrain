@@ -42,6 +42,18 @@ namespace VendingMachineBrain
                 _display.Write("THANK YOU");
                 _display.Write("INSERT COIN");
             }
+            else
+            {
+                _display.Write($"PRICE {product.Price:C}");
+                if (Balance == decimal.Zero)
+                {
+                    _display.Write("INSERT COIN");
+                }
+                else
+                {
+                    _display.Write($"{Balance:C}");
+                }
+            }
         }
 
         void ICoinSlotObserver.CoinInserted(RawCoin rawCoin)
