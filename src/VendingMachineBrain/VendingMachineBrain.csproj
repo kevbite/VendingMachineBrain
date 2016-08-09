@@ -42,14 +42,17 @@
   <ItemGroup>
     <Compile Include="Coin.cs" />
     <Compile Include="CoinIdentifiers\RoyalMintCoinIdentifier.cs" />
+    <Compile Include="ICoinDispenser.cs" />
     <Compile Include="ICoinIdentifier.cs" />
     <Compile Include="ICoinSlot.cs" />
     <Compile Include="ICoinSlotObserver.cs" />
     <Compile Include="IDisplay.cs" />
     <Compile Include="IKeypad.cs" />
     <Compile Include="IKeypadObserver.cs" />
+    <Compile Include="IMoneyDispenser.cs" />
     <Compile Include="IProductDispenser.cs" />
     <Compile Include="Key.cs" />
+    <Compile Include="MoneyDispenserAdapter.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="ProductSlot.cs" />
     <Compile Include="RawCoin.cs" />

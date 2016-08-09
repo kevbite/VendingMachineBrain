@@ -10,16 +10,17 @@ namespace VendingMachineBrain
         private readonly IProductDispenser _productDispenser;
         private readonly ICoinIdentifier _coinIdentifier;
         private readonly IDisplay _display;
+        private readonly IMoneyDispenser _moneyDispenser;
 
         public decimal Balance { get; private set; }
 
-        public VendingMachine(IKeypad keypad, IProductDispenser productDispenser, ICoinSlot coinSlot, IDisplay display)
-            : this(keypad, productDispenser, coinSlot, new RoyalMintCoinIdentifier(), display)
+        public VendingMachine(IKeypad keypad, IProductDispenser productDispenser, ICoinSlot coinSlot, IDisplay display, ICoinDispenser coinDispenser)
+            : this(keypad, productDispenser, coinSlot, new RoyalMintCoinIdentifier(), display, new MoneyDispenserAdapter(coinDispenser))
         {
             
         }
 
-        public VendingMachine(IKeypad keypad, IProductDispenser productDispenser, ICoinSlot coinSlot, ICoinIdentifier coinIdentifier, IDisplay display)
+        public VendingMachine(IKeypad keypad, IProductDispenser productDispenser, ICoinSlot coinSlot, ICoinIdentifier coinIdentifier, IDisplay display, IMoneyDispenser moneyDispenser)
         {
             keypad.Connect(this);
             coinSlot.Connect(this);
@@ -27,6 +28,7 @@ namespace VendingMachineBrain
             _productDispenser = productDispenser;
             _coinIdentifier = coinIdentifier;
             _display = display;
+            _moneyDispenser = moneyDispenser;
         }
 
         public void SetState(IDictionary<ProductSlot, Product> state)
@@ -46,6 +48,9 @@ namespace VendingMachineBrain
                 Balance -= product.Price;
                 _display.Write("THANK YOU");
                 _display.Write("INSERT COIN");
+
+                _moneyDispenser.Dispense(Balance);
+                Balance = 0;
             }
             else
             {

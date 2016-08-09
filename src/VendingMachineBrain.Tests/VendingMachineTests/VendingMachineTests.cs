@@ -7,6 +7,7 @@ namespace VendingMachineBrain.Tests.VendingMachineTests
         protected Mock<IProductDispenser> ProductDispenser;
         protected Mock<ICoinIdentifier> CoinIdentifier;
         protected Mock<IDisplay> Display;
+        public Mock<IMoneyDispenser> MoneyDispenser { get; set; }
 
         protected VendingMachine VendingMachine;
         
@@ -15,8 +16,10 @@ namespace VendingMachineBrain.Tests.VendingMachineTests
             ProductDispenser = new Mock<IProductDispenser>();
             CoinIdentifier = new Mock<ICoinIdentifier>();
             Display = new Mock<IDisplay>();
-            
-            VendingMachine = new VendingMachine(Mock.Of<IKeypad>(), ProductDispenser.Object, Mock.Of<ICoinSlot>(), CoinIdentifier.Object, Display.Object);
+            MoneyDispenser = new Mock<IMoneyDispenser>();
+
+            VendingMachine = new VendingMachine(Mock.Of<IKeypad>(), ProductDispenser.Object, Mock.Of<ICoinSlot>(), CoinIdentifier.Object, Display.Object, MoneyDispenser.Object);
         }
+
     }
 }

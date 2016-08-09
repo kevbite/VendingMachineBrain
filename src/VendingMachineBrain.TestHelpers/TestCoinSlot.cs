@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace VendingMachineBrain.TestHelpers
 {
     public class TestCoinSlot : ICoinSlot

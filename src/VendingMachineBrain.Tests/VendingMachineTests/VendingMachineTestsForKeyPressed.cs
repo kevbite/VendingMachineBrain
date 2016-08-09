@@ -41,9 +41,15 @@ namespace VendingMachineBrain.Tests.VendingMachineTests
         }
 
         [Test]
-        public void ThenTheProductAmountIsDeducedFromBalance()
+        public void ThenTheBalanceShouldBeZero()
         {
-            VendingMachine.Balance.Should().Be(10.0m);
+            VendingMachine.Balance.Should().Be(0.0m);
+        }
+
+        [Test]
+        public void ThenTheRemainingBalanceShouldBeDispensed()
+        {
+            MoneyDispenser.Verify(x => x.Dispense(10.0m));
         }
     }
 }

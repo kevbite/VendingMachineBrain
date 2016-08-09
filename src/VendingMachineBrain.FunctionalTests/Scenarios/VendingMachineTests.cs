@@ -12,11 +12,13 @@ namespace VendingMachineBrain.FunctionalTests.Scenarios
         protected TestDisplay Display;
         protected Dictionary<ProductSlot, Product> State;
         protected VendingMachine VendingMachine;
+        protected Mock<ICoinDispenser> CoinDispenser;
 
         public void GivenAVedingMachine()
         {
             Keypad = new TestKeypad();
             ProductDispenser = new Mock<IProductDispenser>();
+            CoinDispenser = new Mock<ICoinDispenser>();
             CoinSlot = new TestCoinSlot();
             Display = new TestDisplay();
 
@@ -27,7 +29,7 @@ namespace VendingMachineBrain.FunctionalTests.Scenarios
                 {ProductSlot.Three, new Product("Candy", 0.65m)}
             };
 
-            VendingMachine = new VendingMachine(Keypad, ProductDispenser.Object, CoinSlot, Display);
+            VendingMachine = new VendingMachine(Keypad, ProductDispenser.Object, CoinSlot, Display, CoinDispenser.Object);
             VendingMachine.SetState(State);
         }
     }
