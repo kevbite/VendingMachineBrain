@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VendingMachineBrain.TestHel
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VendingMachineBrain.FunctionalTests", "VendingMachineBrain.FunctionalTests\VendingMachineBrain.FunctionalTests.csproj", "{1DC8E724-5117-48FD-B905-44553EC085FA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VendingMachineBrain.Example", "VendingMachineBrain.Example\VendingMachineBrain.Example.csproj", "{B89BC9D2-E5DF-491B-84B2-AF9C69A1C628}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{1DC8E724-5117-48FD-B905-44553EC085FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1DC8E724-5117-48FD-B905-44553EC085FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1DC8E724-5117-48FD-B905-44553EC085FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B89BC9D2-E5DF-491B-84B2-AF9C69A1C628}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B89BC9D2-E5DF-491B-84B2-AF9C69A1C628}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B89BC9D2-E5DF-491B-84B2-AF9C69A1C628}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B89BC9D2-E5DF-491B-84B2-AF9C69A1C628}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

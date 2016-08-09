@@ -2,6 +2,6 @@ namespace VendingMachineBrain
 {
     public interface ICoinSlot
     {
-        void Connect(ICoinSlotObserver vendingMachine);
+        void Connect(ICoinSlotObserver coinSlotObserver);
     }
 }
