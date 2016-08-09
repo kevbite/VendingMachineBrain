@@ -17,15 +17,13 @@ namespace VendingMachineBrain
             foreach (var availableCoin in _availableCoins.OrderByDescending(x => x.Amount))
             {
                 var coinsRequired = (int)(amount/availableCoin.Amount);
-                if (coinsRequired != 0)
-                {
-                    foreach (var coin in Enumerable.Repeat(availableCoin, coinsRequired))
-                    {
-                        _coinDispenser.Dispense(availableCoin);
-                    }
 
-                    amount = amount%availableCoin.Amount;
+                foreach (var coin in Enumerable.Repeat(availableCoin, coinsRequired))
+                {
+                    _coinDispenser.Dispense(coin);
                 }
+
+                amount = amount%availableCoin.Amount;
             }
         }
 
