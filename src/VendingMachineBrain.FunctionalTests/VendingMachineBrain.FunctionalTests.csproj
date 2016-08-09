@@ -64,6 +64,7 @@
     <Compile Include="RawCoins.cs" />
     <Compile Include="Scenarios\BuyingAProductWithABalanceRemaining.cs" />
     <Compile Include="Scenarios\BuyingAProductWithExactMoney.cs" />
+    <Compile Include="Scenarios\InsertingCoinsThenRequestingCoinsToBeReturned.cs" />
     <Compile Include="Scenarios\TryingToBuyingAProductWithNoMoney.cs" />
     <Compile Include="Scenarios\TryingToBuyingAProductWithNotEnoughMoney.cs" />
     <Compile Include="Scenarios\VendingMachineTests.cs" />

@@ -68,6 +68,7 @@
     <Compile Include="VendingMachineTests\VendingMachineTestsForKeyPressed.cs" />
     <Compile Include="VendingMachineTests\VendingMachineTestsForKeyPressedForIncorrectBalance.cs" />
     <Compile Include="VendingMachineTests\VendingMachineTestsForKeyPressedForZeroBalance.cs" />
+    <Compile Include="VendingMachineTests\VendingMachineTestsForReturnButton.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\VendingMachineBrain.TestHelpers\VendingMachineBrain.TestHelpers.csproj">

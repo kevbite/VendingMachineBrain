@@ -1,6 +1,6 @@
 namespace VendingMachineBrain
 {
-    public interface IMoneyDispenser
+    public interface IMoneyDispenser : ICoinDispenser
     {
         void Dispense(decimal amount);
     }

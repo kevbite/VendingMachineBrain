@@ -50,5 +50,15 @@ namespace VendingMachineBrain.Tests.MoneyDispenserAdapterTests
 
             _coinDispenser.Verify(x => x.Dispense(It.Is<Coin>(coin => coin.Amount == Coin.TwoPence.Amount)), Times.Exactly(2));
         }
+
+        [Test]
+        public void WhenDispensingAnActualCoinThenTheCoinIsPassedToTheCoinDispenser()
+        {
+            var onePence = Coin.OnePence;
+
+            _adapter.Dispense(onePence);
+
+            _coinDispenser.Verify(x => x.Dispense(onePence), Times.Once);
+        }
     }
 }

@@ -18,7 +18,7 @@ namespace VendingMachineBrain.Tests.VendingMachineTests
             Display = new Mock<IDisplay>();
             MoneyDispenser = new Mock<IMoneyDispenser>();
 
-            VendingMachine = new VendingMachine(Mock.Of<IKeypad>(), ProductDispenser.Object, Mock.Of<ICoinSlot>(), CoinIdentifier.Object, Display.Object, MoneyDispenser.Object);
+            VendingMachine = new VendingMachine(Mock.Of<IKeypad>(), ProductDispenser.Object, Mock.Of<ICoinSlot>(), CoinIdentifier.Object, Display.Object, MoneyDispenser.Object, Mock.Of<IReturnButton>());
         }
 
     }

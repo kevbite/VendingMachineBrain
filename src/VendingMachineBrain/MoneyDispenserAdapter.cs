@@ -38,5 +38,10 @@ namespace VendingMachineBrain
             Coin.OnePound,
             Coin.TwoPound,
         };
+
+        public void Dispense(Coin coins)
+        {
+            _coinDispenser.Dispense(coins);
+        }
     }
 }
